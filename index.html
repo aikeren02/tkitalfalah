@@ -3,479 +3,448 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Capaian TKIT AL FALAH Cirebon - Januari 2026</title>
+    <title>Capaian TKIT Al Falah</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary-color: #ff6b6b; /* Coral Red for TKIT */
+            --secondary-color: #ee5a5a;
+            --accent-color: #ffe3e3;
+            --text-color: #333;
+            --bg-color: #fff5f5;
+            --white: #ffffff;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-            padding: 20px;
-            color: #333;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
-
+        /* Header */
         header {
-            background: linear-gradient(135deg, #1e5799 0%, #207cca 51%, #2989d8 100%);
-            color: white;
-            padding: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
             text-align: center;
+            padding: 2.5rem 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
-        .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
+        header p {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            opacity: 0.95;
         }
 
-        .controls {
-            padding: 20px;
-            background: #f8f9fa;
-            border-bottom: 2px solid #e9ecef;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .search-box {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 12px 20px;
-            border: 2px solid #ddd;
-            border-radius: 50px;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-
-        .search-box input:focus {
-            border-color: #ff6b6b;
-            outline: none;
-            box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
-        }
-
-        .filter-group {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        select {
-            padding: 10px 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
-            background: white;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        select:focus {
-            border-color: #ff6b6b;
-            outline: none;
-        }
-
-        .stats {
-            padding: 15px 20px;
-            background: #e8f4fd;
-            border-bottom: 2px solid #c3e0ff;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 10px 20px;
-        }
-
-        .stat-number {
-            font-size: 2em;
-            font-weight: bold;
-            color: #1e5799;
-        }
-
-        .stat-label {
-            font-size: 0.9em;
-            color: #666;
-        }
-
-        .student-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .student-card {
-            background: white;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .student-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-            border-color: #ff6b6b;
-        }
-
-        .student-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .student-number {
-            background: #ff6b6b;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .student-name {
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #1e5799;
-            flex: 1;
-            margin-left: 10px;
-        }
-
-        .student-class {
-            background: #207cca;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: bold;
-        }
-
-        .achievement {
-            margin: 10px 0;
-            padding: 12px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid #ff6b6b;
-        }
-
-        .achievement-label {
-            font-size: 0.85em;
-            color: #666;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .achievement-value {
-            font-size: 1.1em;
-            color: #1e5799;
-            font-weight: bold;
-        }
-
-        .no-data {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 40px;
-            color: #999;
-            font-size: 1.2em;
-        }
-
-        @media (max-width: 768px) {
-            .student-grid {
-                grid-template-columns: 1fr;
-            }
-
-            h1 {
-                font-size: 1.8em;
-            }
-
-            .controls {
-                flex-direction: column;
-                align-items: stretch;
-            }
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
+        /* Navigation / Tabs */
+        .nav-container {
+            background-color: var(--white);
+            padding: 1.5rem;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            overflow-x: auto;
+            white-space: nowrap;
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
         }
 
-        .modal-content {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            max-width: 600px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #ff6b6b;
-        }
-
-        .close-modal {
+        .nav-btn {
             background: none;
-            border: none;
-            font-size: 2em;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 12px 25px;
+            margin: 5px;
+            border-radius: 30px;
             cursor: pointer;
-            color: #666;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
         }
 
-        .close-modal:hover {
-            color: #1e5799;
+        .nav-btn:hover, .nav-btn.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1400px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .class-section {
+            display: none;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .class-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--secondary-color);
+            margin-bottom: 2.5rem;
+            font-size: 2.2rem;
+            border-bottom: 4px solid var(--primary-color);
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        .center-title {
+            text-align: center;
+        }
+
+        /* Comparison Layout */
+        .comparison-wrapper {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .month-card {
+            flex: 1;
+            min-width: 350px;
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .month-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .month-header {
+            color: var(--white);
+            padding: 18px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .month-header.jan { 
+            background: linear-gradient(135deg, #ff8e8e, #ff6b6b); 
+        }
+        .month-header.feb { 
+            background: linear-gradient(135deg, #ff6b6b, #ee5a5a); 
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        tr:hover {
+            background-color: #fff9f9;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        .tahsin-col { 
+            color: #d63031; 
+            font-weight: 600; 
+        }
+        .tahfidz-col { 
+            color: #00b894; 
+            font-weight: 600; 
+        }
+
+        .note {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+            text-align: right;
+            padding: 10px;
+            background: #fff3cd;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .comparison-wrapper {
+                flex-direction: column;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            .nav-container {
+                text-align: left;
+            }
+            .month-card {
+                min-width: 100%;
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--white);
+            margin-top: 3rem;
+            color: #666;
+            border-top: 1px solid #eee;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>📊 CAPAIAN TKIT AL FALAH CIREBON</h1>
-            <p class="subtitle">Bulan Januari 2026</p>
-        </header>
 
-        <div class="controls">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="🔍 Cari nama siswa..." onkeyup="filterStudents()">
-            </div>
-            <div class="filter-group">
-                <select id="classFilter" onchange="filterStudents()">
-                    <option value="">Semua Kelas</option>
-                    <option value="A">Kelas A</option>
-                    <option value="B">Kelas B</option>
-                </select>
-                <select id="subjectFilter" onchange="filterStudents()">
-                    <option value="">Semua Mata Pelajaran</option>
-                    <option value="tahsin">Tahsin</option>
-                    <option value="tahfidz">Tahfidz</option>
-                </select>
-            </div>
-        </div>
+<header>
+    <h1>🌟 TKIT Al Falah 🌟</h1>
+    <p>Laporan Perkembangan Tahsin & Tahfidz Siswa</p>
+</header>
 
-        <div class="stats">
-            <div class="stat-card">
-                <div class="stat-number" id="totalStudents">0</div>
-                <div class="stat-label">Total Siswa</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="filteredCount">0</div>
-                <div class="stat-label">Siswa Ditampilkan</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="classCount">0</div>
-                <div class="stat-label">Jumlah Kelas</div>
-            </div>
-        </div>
+<!-- Navigation Buttons -->
+<div class="nav-container" id="navContainer">
+    <!-- Buttons will be injected here by JS -->
+</div>
 
-        <div class="student-grid" id="studentGrid">
-            <!-- Data siswa akan ditampilkan di sini -->
-        </div>
-    </div>
+<div class="container" id="contentContainer">
+    <!-- Content will be injected here by JS -->
+</div>
 
-    <div class="modal" id="studentModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalStudentName">Nama Siswa</h2>
-                <button class="close-modal" onclick="closeModal()">&times;</button>
-            </div>
-            <div id="modalContent">
-                <!-- Detail siswa akan ditampilkan di sini -->
-            </div>
-        </div>
-    </div>
+<footer>
+    <p>© 2026 TKIT Al Falah - Laporan Capaian Pembelajaran</p>
+</footer>
 
-    <script>
-        // Data siswa dari file Excel TKIT AL FALAH Cirebon
-        const studentsData = [
-            // Kelas A
-            { no: 1, name: "Arka Riffat A", class: "A", tahsin: "Jilid 1 hal 9", tahfidz: "An-Nazi'at: 8" },
-            { no: 2, name: "Azkia Nailatulizzah", class: "A", tahsin: "Jilid 1 hal 11", tahfidz: "An-Nazi'at: 5" },
-            { no: 3, name: "Ezar Prayudi Aflah mannaf", class: "A", tahsin: "Jilid 1 hal 20", tahfidz: "An-Nazi'at: 25" },
-            { no: 4, name: "Faezya Adzando Rahman", class: "A", tahsin: "Jilid 1 hal 13", tahfidz: "An-Nazi'at: 24" },
-            { no: 5, name: "Fatimatul Husna Fillah", class: "A", tahsin: "Jilid 1 hal 31", tahfidz: "Abasa: 25" },
-            { no: 6, name: "Gianaletha Tsabita Ahmad", class: "A", tahsin: "Jilid 1 hal 13", tahfidz: "An-Naba': 30" },
-            { no: 7, name: "Grizelle Auristela Darojat", class: "A", tahsin: "Jilid 1 hal 10", tahfidz: "An-Naba': 37" },
-            { no: 8, name: "Jihan Azahfah", class: "A", tahsin: "Jilid 1 hal 3", tahfidz: "An-Naba': 5" },
-            { no: 9, name: "Jihan Khonita", class: "A", tahsin: "Jilid 1 hal 28", tahfidz: "An-Nazi'at: 28" },
-            { no: 10, name: "M. Althaf Syafiq", class: "A", tahsin: "Jilid 1 hal 20", tahfidz: "An-Nazi'at: 26" },
-            { no: 11, name: "Mohamad Zacky Muammar", class: "A", tahsin: "Jilid 1 hal 14", tahfidz: "An-Nazi'at: 7" },
-            { no: 12, name: "Muhammad Sulthan Rafasa", class: "A", tahsin: "Jilid 1 hal 10", tahfidz: "An-Naba': 40" },
-            { no: 13, name: "Muttaqiyah Al-Mafaazah", class: "A", tahsin: "Jilid 1 hal 14", tahfidz: "An-Naba': 34" },
-            { no: 14, name: "Ribby Zaydan Azhar", class: "A", tahsin: "Jilid 1 hal 30", tahfidz: "Abasa: 25" },
-            { no: 15, name: "Safiyya Alisha Putri", class: "A", tahsin: "Jilid 1 hal 12", tahfidz: "An-Nazi'at: 5" },
-            
-            // Kelas B
-            { no: 1, name: "Afikha Rafailah Putri", class: "B", tahsin: "Jilid 1 hal 30", tahfidz: "an naziat  1-15" },
-            { no: 2, name: "Alvarendra Rizky Gumilang", class: "B", tahsin: "Jilid 1 hal 38", tahfidz: "an naziat 1-40" },
-            { no: 3, name: "Arshaq Luthfi Atharrazka", class: "B", tahsin: "Jilid 1 hal 36", tahfidz: "an naziat 1-25" },
-            { no: 4, name: "Baby Yasmin Andrea Puti", class: "B", tahsin: "Jilid 1 hal 15", tahfidz: "an naziat 1-20" },
-            { no: 5, name: "Bayu Karsyah", class: "B", tahsin: "Jilid 1 hal 37", tahfidz: "an naziat  1-40" },
-            { no: 6, name: "Bilal Ibrahim", class: "B", tahsin: "Jilid 2 hal 2", tahfidz: "an naziat 1-20" },
-            { no: 7, name: "Devara Syalwa Azzahra", class: "B", tahsin: "Jilid 1 hal 30", tahfidz: "an naziat 1-25" },
-            { no: 8, name: "Faiqah Ainur Sakhi", class: "B", tahsin: "Jilid 1 hal 17", tahfidz: "an naziat 1-20" },
-            { no: 9, name: "Ghaisan Raffasya Alfarizy", class: "B", tahsin: "Jilid 1 hal 31", tahfidz: "an naziat 1-30" },
-            { no: 10, name: "Iris Citrik Byafari", class: "B", tahsin: "Jilid 1 hal 20", tahfidz: "an naziat 1 -30" },
-            { no: 11, name: "Jihan Azzahra", class: "B", tahsin: "Jilid 1 20", tahfidz: "an naziat 1-15" },
-            { no: 12, name: "Kyara Aisyah Deviela", class: "B", tahsin: "Jilid 1 hal 17", tahfidz: "an naziat 1-32" },
-            { no: 13, name: "Maqil Sharim Hanafiah", class: "B", tahsin: "Jilid 2 hal 3", tahfidz: "al haqoh  1-30" },
-            { no: 14, name: "Mardhatillah Al-Mumtazah", class: "B", tahsin: "Jilid 2 hal 3", tahfidz: "al Insyiqoq 1-10" },
-            { no: 15, name: "Muhammad Ahsan Fathurrahman", class: "B", tahsin: "Jilid 1 25", tahfidz: "an naziat 1-30" },
-            { no: 16, name: "Muhammad Fatih Alfarizi", class: "B", tahsin: "Jilid 1 hal 17", tahfidz: "an naba 1-10" },
-            { no: 17, name: "Muhammad Reindra Edlin Safwan", class: "B", tahsin: "Jilid 1 hal 20", tahfidz: "an naba 1-28" },
-            { no: 18, name: "Qiana Lanika Ramadhan", class: "B", tahsin: "Jilid 1 hal 40", tahfidz: "an naziat 1-40" },
-            { no: 19, name: "Rifqi Naufal Alfarezi", class: "B", tahsin: "Jilid 2 hal 1", tahfidz: "an naziat 1-25" },
-            { no: 20, name: "Sulthan Azhar Haidar", class: "B", tahsin: "Jilid 1 hal 25", tahfidz: "an naziat 1-20" }
-        ];
+<script>
+    // TKIT Data Only
+    const schoolData = [
+        {
+            id: "TKIT-A", 
+            name: "🎈 TKIT Kelas A",
+            jan: [
+                {no:1, nama:"Arka Riffat A", kls:"A", tahsin:"Jilid 1 hal 9", tahfidz:"An-Nazi'at: 8"},
+                {no:2, nama:"Azkia Nailatulizzah", kls:"A", tahsin:"Jilid 1 hal 11", tahfidz:"An-Nazi'at: 5"},
+                {no:3, nama:"Ezar Prayudi Aflah mannaf", kls:"A", tahsin:"Jilid 1 hal 20", tahfidz:"An-Nazi'at: 25"},
+                {no:4, nama:"Faezya Adzando Rahman", kls:"A", tahsin:"Jilid 1 hal 13", tahfidz:"An-Nazi'at: 24"},
+                {no:5, nama:"Fatimatul Husna Fillah", kls:"A", tahsin:"Jilid 1 hal 31", tahfidz:"Abasa: 25"},
+                {no:6, nama:"Gianaletha Tsabita Ahmad", kls:"A", tahsin:"Jilid 1 hal 13", tahfidz:"An-Naba': 30"},
+                {no:7, nama:"Grizelle Auristela Darojat", kls:"A", tahsin:"Jilid 1 hal 10", tahfidz:"An-Naba': 37"},
+                {no:8, nama:"Jihan Azahfah", kls:"A", tahsin:"Jilid 1 hal 3", tahfidz:"An-Naba': 5"},
+                {no:9, nama:"Jihan Khonita", kls:"A", tahsin:"Jilid 1 hal 28", tahfidz:"An-Nazi'at: 28"},
+                {no:10, nama:"M. Althaf Syafiq", kls:"A", tahsin:"Jilid 1 hal 20", tahfidz:"An-Nazi'at: 26"},
+                {no:11, nama:"Mohamad Zacky Muammar", kls:"A", tahsin:"Jilid 1 hal 14", tahfidz:"An-Nazi'at: 7"},
+                {no:12, nama:"Muhammad Sulthan Rafasa", kls:"A", tahsin:"Jilid 1 hal 10", tahfidz:"An-Naba': 40"},
+                {no:13, nama:"Muttaqiyah Al-Mafaazah", kls:"A", tahsin:"Jilid 1 hal 14", tahfidz:"An-Naba': 34"},
+                {no:14, nama:"Ribby Zaydan Azhar", kls:"A", tahsin:"Jilid 1 hal 30", tahfidz:"Abasa: 25"},
+                {no:15, nama:"Safiyya Alisha Putri", kls:"A", tahsin:"Jilid 1 hal 12", tahfidz:"An-Nazi'at: 5"}
+            ],
+            feb: [
+                {no:1, nama:"Arka Riffat A", kls:"A", tahsin:"Jilid 1 hal 10", tahfidz:"An-Nazi'at: 10"},
+                {no:2, nama:"Azkia Nailatulizzah", kls:"A", tahsin:"Jilid 1 hal 12", tahfidz:"An-Nazi'at: 8"},
+                {no:3, nama:"Ezar Prayudi Aflah mannaf", kls:"A", tahsin:"Jilid 1 hal 21", tahfidz:"An-Nazi'at: 31"},
+                {no:4, nama:"Faezya Adzando Rahman", kls:"A", tahsin:"Jilid 1 hal 15", tahfidz:"An-Nazi'at: 30"},
+                {no:5, nama:"Fatimatul Husna Fillah", kls:"A", tahsin:"Jilid 1 hal 31", tahfidz:"Abasa: 35"},
+                {no:6, nama:"Gianaletha Tsabita Ahmad", kls:"A", tahsin:"Jilid 1 hal 16", tahfidz:"An-Naba': 35"},
+                {no:7, nama:"Grizelle Auristela Darojat", kls:"A", tahsin:"Jilid 1 hal 10", tahfidz:"An-Naba': 38"},
+                {no:8, nama:"Jihan Azahfah", kls:"A", tahsin:"Jilid 1 hal 5", tahfidz:"An-Naba': 7"},
+                {no:9, nama:"Jihan Khonita", kls:"A", tahsin:"Jilid 1 hal 29", tahfidz:"An-Nazi'at: 32"},
+                {no:10, nama:"M. Althaf Syafiq", kls:"A", tahsin:"Jilid 1 hal 22", tahfidz:"An-Nazi'at: 29"},
+                {no:11, nama:"Mohamad Zacky Muammar", kls:"A", tahsin:"Jilid 1 hal 16", tahfidz:"An-Nazi'at: 10"},
+                {no:12, nama:"Muhammad Sulthan Rafasa", kls:"A", tahsin:"Jilid 1 hal 10", tahfidz:"An-Naba': 40"},
+                {no:13, nama:"Muttaqiyah Al-Mafaazah", kls:"A", tahsin:"Jilid 1 hal 15", tahfidz:"An-Naba': 35"},
+                {no:14, nama:"Ribby Zaydan Azhar", kls:"A", tahsin:"Jilid 1 hal 31", tahfidz:"Abasa: 37"},
+                {no:15, nama:"Safiyya Alisha Putri", kls:"A", tahsin:"Jilid 1 hal 14", tahfidz:"An-Nazi'at: 8"}
+            ],
+            note: "Hari efektif pembelajaran Tahsin & Tahfidz dibulan Februari berjumlah 8 hari"
+        },
+        {
+            id: "TKIT-B", 
+            name: "🎈 TKIT Kelas B",
+            jan: [
+                {no:1, nama:"Afikha Rafailah Putri", kls:"B", tahsin:"Jilid 1 hal 30", tahfidz:"An Nazi'at 1-15"},
+                {no:2, nama:"Alvarendra Rizky Gumilang", kls:"B", tahsin:"Jilid 1 hal 38", tahfidz:"An Nazi'at 1-40"},
+                {no:3, nama:"Arshaq Luthfi Atharrazka", kls:"B", tahsin:"Jilid 1 hal 36", tahfidz:"An Nazi'at 1-25"},
+                {no:4, nama:"Baby Yasmin Andrea Puti", kls:"B", tahsin:"Jilid 1 hal 15", tahfidz:"An Nazi'at 1-20"},
+                {no:5, nama:"Bayu Karsyah", kls:"B", tahsin:"Jilid 1 hal 37", tahfidz:"An Nazi'at 1-40"},
+                {no:6, nama:"Bilal Ibrahim", kls:"B", tahsin:"Jilid 2 hal 2", tahfidz:"An Nazi'at 1-20"},
+                {no:7, nama:"Devara Syalwa Azzahra", kls:"B", tahsin:"Jilid 1 hal 30", tahfidz:"An Nazi'at 1-25"},
+                {no:8, nama:"Faiqah Ainur Sakhi", kls:"B", tahsin:"Jilid 1 hal 17", tahfidz:"An Nazi'at 1-20"},
+                {no:9, nama:"Ghaisan Raffasya Alfarizy", kls:"B", tahsin:"Jilid 1 hal 31", tahfidz:"An Nazi'at 1-30"},
+                {no:10, nama:"Iris Citrik Byafari", kls:"B", tahsin:"Jilid 1 hal 20", tahfidz:"An Nazi'at 1-30"},
+                {no:11, nama:"Jihan Azzahra", kls:"B", tahsin:"Jilid 1 hal 20", tahfidz:"An Naba 1-30"},
+                {no:12, nama:"Kyara Aisyah Deviela", kls:"B", tahsin:"Jilid 1 hal 17", tahfidz:"An Nazi'at 1-32"},
+                {no:13, nama:"Maqil Sharim Hanafiah", kls:"B", tahsin:"Jilid 2 hal 3", tahfidz:"Al Haqqah 1-30"},
+                {no:14, nama:"Mardhatillah Al-Mumtazah", kls:"B", tahsin:"Jilid 2 hal 3", tahfidz:"Al Insyiqoq 1-10"},
+                {no:15, nama:"Muhammad Ahsan Fathurrahman", kls:"B", tahsin:"Jilid 1 hal 25", tahfidz:"An Nazi'at 1-30"},
+                {no:16, nama:"Muhammad Fatih Alfarizi", kls:"B", tahsin:"Jilid 1 hal 17", tahfidz:"An Naba 1-10"},
+                {no:17, nama:"Muhammad Reindra Edlin Safwan", kls:"B", tahsin:"Jilid 1 hal 20", tahfidz:"An Naba 1-28"},
+                {no:18, nama:"Qiana Lanika Ramadhan", kls:"B", tahsin:"Jilid 1 hal 40", tahfidz:"An Nazi'at 1-40"},
+                {no:19, nama:"Rifqi Naufal Alfarezi", kls:"B", tahsin:"Jilid 2 hal 1", tahfidz:"An Nazi'at 1-25"},
+                {no:20, nama:"Sulthan Azhar Haidar", kls:"B", tahsin:"Jilid 1 hal 25", tahfidz:"An Nazi'at 1-20"}
+            ],
+            feb: [
+                {no:1, nama:"Afikha Rafailah Putri", kls:"B", tahsin:"Jilid 1 hal 26", tahfidz:"An Nazi'at 1-36"},
+                {no:2, nama:"Alvarendra Rizky Gumilang", kls:"B", tahsin:"Jilid 1 hal 28", tahfidz:"An Nazi'at 1-46"},
+                {no:3, nama:"Arshaq Luthfi Atharrazka", kls:"B", tahsin:"Jilid 2 hal 1", tahfidz:"An Nazi'at 1-40"},
+                {no:4, nama:"Baby Yasmin Andrea Puti", kls:"B", tahsin:"Jilid 1 hal 22", tahfidz:"An Nazi'at 1-27"},
+                {no:5, nama:"Bayu Karsyah", kls:"B", tahsin:"Jilid 1 hal 45", tahfidz:"A'basa 1-5"},
+                {no:6, nama:"Bilal Ibrahim", kls:"B", tahsin:"Jilid 2 hal 3", tahfidz:"An Nazi'at 1-35"},
+                {no:7, nama:"Devara Syalwa Azzahra", kls:"B", tahsin:"Jilid 1 hal 35", tahfidz:"An Nazi'at 1-33"},
+                {no:8, nama:"Faiqah Ainur Sakhi", kls:"B", tahsin:"Jilid 1 hal 23", tahfidz:"An Nazi'at 1-23"},
+                {no:9, nama:"Ghaisan Raffasya Alfarizy", kls:"B", tahsin:"Jilid 1 hal 35", tahfidz:"An Naba 1-5"},
+                {no:10, nama:"Iris Citrik Byafari", kls:"B", tahsin:"Jilid 1 hal 33", tahfidz:"An Nazi'at 1-40"},
+                {no:11, nama:"Jihan Azzahra", kls:"B", tahsin:"Jilid 1 hal 30", tahfidz:"An Naba 1-34"},
+                {no:12, nama:"Kyara Aisyah Deviela", kls:"B", tahsin:"Jilid 1 hal 20", tahfidz:"An Nazi'at 1-42"},
+                {no:13, nama:"Maqil Sharim Hanafiah", kls:"B", tahsin:"Jilid 2 hal 8", tahfidz:"Al Ma'arij"},
+                {no:14, nama:"Mardhatillah Al-Mumtazah", kls:"B", tahsin:"Jilid 2 hal 4", tahfidz:"Al Insyiqoq 1-15"},
+                {no:15, nama:"Muhammad Ahsan Fathurrahman", kls:"B", tahsin:"Jilid 1 hal 1-30", tahfidz:"An Nazi'at 1-39"},
+                {no:16, nama:"Muhammad Fatih Alfarizi", kls:"B", tahsin:"Jilid 1 hal 20", tahfidz:"An Naba 1-12"},
+                {no:17, nama:"Muhammad Reindra Edlin Safwan", kls:"B", tahsin:"Jilid 1 hal 26", tahfidz:"An Naba 1-30"},
+                {no:18, nama:"Qiana Lanika Ramadhan", kls:"B", tahsin:"Jilid 2 hal 4", tahfidz:"A'basa 1-10"},
+                {no:19, nama:"Rifqi Naufal Alfarezi", kls:"B", tahsin:"Jilid 1 hal 28", tahfidz:"An Nazi'at 1-28"},
+                {no:20, nama:"Sulthan Azhar Haidar", kls:"B", tahsin:"Jilid 1 hal 36", tahfidz:"An Nazi'at 1-40"}
+            ],
+            note: "Hari efektif pembelajaran Tahsin & Tahfidz dibulan Februari berjumlah 8 hari"
+        }
+    ];
 
-        // Fungsi untuk menampilkan data siswa
-        function displayStudents(students) {
-            const grid = document.getElementById('studentGrid');
-            grid.innerHTML = '';
+    // Function to generate HTML
+    function renderData() {
+        const navContainer = document.getElementById('navContainer');
+        const contentContainer = document.getElementById('contentContainer');
 
-            if (students.length === 0) {
-                grid.innerHTML = '<div class="no-data">🔍 Tidak ada data siswa yang ditemukan</div>';
-                document.getElementById('filteredCount').textContent = '0';
-                return;
+        // Generate Navigation
+        schoolData.forEach((item, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'nav-btn';
+            if (index === 0) btn.classList.add('active');
+            btn.innerText = item.name;
+            btn.onclick = () => switchTab(index);
+            navContainer.appendChild(btn);
+        });
+
+        // Generate Content
+        schoolData.forEach((item, index) => {
+            const section = document.createElement('div');
+            section.className = 'class-section';
+            if (index === 0) section.classList.add('active');
+            section.id = `section-${index}`;
+
+            const title = document.createElement('div');
+            title.className = 'center-title';
+            title.innerHTML = `<h2 class="section-title">${item.name}</h2>`;
+            section.appendChild(title);
+
+            const wrapper = document.createElement('div');
+            wrapper.className = 'comparison-wrapper';
+
+            // January Card
+            const janCard = createMonthCard("📅 BULAN JANUARI 2026", "jan", item.jan);
+            wrapper.appendChild(janCard);
+
+            // February Card
+            const febCard = createMonthCard("📅 BULAN FEBRUARI 2026", "feb", item.feb);
+            wrapper.appendChild(febCard);
+
+            section.appendChild(wrapper);
+
+            if(item.note) {
+                const note = document.createElement('div');
+                note.className = 'note';
+                note.innerHTML = `📝 <strong>Catatan:</strong> ${item.note}`;
+                section.appendChild(note);
             }
 
-            students.forEach(student => {
-                const card = document.createElement('div');
-                card.className = 'student-card';
-                card.onclick = () => showStudentDetail(student);
-                
-                card.innerHTML = `
-                    <div class="student-header">
-                        <div class="student-number">${student.no}</div>
-                        <div class="student-name">${student.name}</div>
-                        <div class="student-class">${student.class}</div>
-                    </div>
-                    <div class="achievement">
-                        <div class="achievement-label">📖 Tahsin</div>
-                        <div class="achievement-value">${student.tahsin || '-'}</div>
-                    </div>
-                    <div class="achievement">
-                        <div class="achievement-label">🕌 Tahfidz</div>
-                        <div class="achievement-value">${student.tahfidz || '-'}</div>
-                    </div>
-                `;
-                
-                grid.appendChild(card);
-            });
+            contentContainer.appendChild(section);
+        });
+    }
 
-            document.getElementById('filteredCount').textContent = students.length;
-        }
+    function createMonthCard(title, type, data) {
+        const card = document.createElement('div');
+        card.className = 'month-card';
 
-        // Fungsi filter siswa
-        function filterStudents() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const classFilter = document.getElementById('classFilter').value;
-            const subjectFilter = document.getElementById('subjectFilter').value;
+        const header = document.createElement('div');
+        header.className = `month-header ${type}`;
+        header.innerText = title;
+        card.appendChild(header);
 
-            let filtered = studentsData.filter(student => {
-                const matchName = student.name.toLowerCase().includes(searchTerm);
-                const matchClass = classFilter === '' || student.class === classFilter;
-                return matchName && matchClass;
-            });
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        thead.innerHTML = `
+            <tr>
+                <th style="width: 50px;">No</th>
+                <th>Nama Siswa</th>
+                <th style="width: 60px;">Kls</th>
+                <th>Tahsin</th>
+                <th>Tahfidz</th>
+            </tr>
+        `;
+        table.appendChild(thead);
 
-            if (subjectFilter !== '') {
-                filtered = filtered.filter(student => {
-                    if (subjectFilter === 'tahsin') {
-                        return student.tahsin && student.tahsin.toLowerCase().includes(searchTerm);
-                    } else if (subjectFilter === 'tahfidz') {
-                        return student.tahfidz && student.tahfidz.toLowerCase().includes(searchTerm);
-                    }
-                    return true;
-                });
-            }
-
-            displayStudents(filtered);
-        }
-
-        // Fungsi untuk menampilkan detail siswa
-        function showStudentDetail(student) {
-            const modal = document.getElementById('studentModal');
-            const modalName = document.getElementById('modalStudentName');
-            const modalContent = document.getElementById('modalContent');
-
-            modalName.textContent = student.name;
-            modalContent.innerHTML = `
-                <div style="line-height: 1.8;">
-                    <p><strong>_kelas:</strong> ${student.class}</p>
-                    <p><strong>📖 Tahsin:</strong> ${student.tahsin || '-'}</p>
-                    <p><strong>🕌 Tahfidz:</strong> ${student.tahfidz || '-'}</p>
-                </div>
+        const tbody = document.createElement('tbody');
+        data.forEach(row => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${row.no}</td>
+                <td><strong>${row.nama}</strong></td>
+                <td>${row.kls}</td>
+                <td class="tahsin-col">📖 ${row.tahsin}</td>
+                <td class="tahfidz-col">🕌 ${row.tahfidz}</td>
             `;
+            tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        card.appendChild(table);
 
-            modal.style.display = 'flex';
-        }
+        return card;
+    }
 
-        // Fungsi untuk menutup modal
-        function closeModal() {
-            document.getElementById('studentModal').style.display = 'none';
-        }
+    function switchTab(index) {
+        // Remove active class from all buttons and sections
+        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.class-section').forEach(sec => sec.classList.remove('active'));
 
-        // Tutup modal saat klik di luar konten
-        window.onclick = function(event) {
-            const modal = document.getElementById('studentModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
+        // Add active class to selected
+        document.querySelectorAll('.nav-btn')[index].classList.add('active');
+        document.getElementById(`section-${index}`).classList.add('active');
+    }
 
-        // Inisialisasi
-        window.onload = function() {
-            displayStudents(studentsData);
-            document.getElementById('totalStudents').textContent = studentsData.length;
-            
-            // Hitung jumlah kelas unik
-            const uniqueClasses = [...new Set(studentsData.map(s => s.class))];
-            document.getElementById('classCount').textContent = uniqueClasses.length;
-            document.getElementById('filteredCount').textContent = studentsData.length;
-        };
-    </script>
+    // Initialize
+    renderData();
+</script>
+
 </body>
 </html>
